@@ -8,9 +8,10 @@ from django.utils import timezone
 
 class Topic(models.Model):
     name = models.CharField(max_length=200)
-    category = models.CharField(blank=False, max_length=300)
+    category = models.CharField(blank=False, max_length=300, default="")
     def __str__(self):
         return f'Name: {self.name}, Category: {self.category}'
+
 
 class Course(models.Model):
 
@@ -38,18 +39,25 @@ class Student(User):
         return f'School: {self.school}, City: {self.city}, Interest: {self.interested_in}'
 
 
-
 class Order(models.Model):
 
     Order_Choice = [(0, 'Canceled'), (1, 'Order Confirmed')]
-
     course = models.ForeignKey(Course, related_name='orders', on_delete=models.CASCADE)
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    levels = models.PositiveIntegerField()
+    levels = models.PositiveIntegerField(blank=True, null=True)
     order_status = models.IntegerField(default=1, choices=Order_Choice)
     order_date = models.DateField()
 
     def __str__(self):
         return f'Course: {self.course}, Student: {self.student},' \
                f' Level: {self.levels}, Order status: {self.order_date}, Date: {self.order_date}'
+
+    def total_cost(self):
+        totalPrice = 0;
+        for course in Order.objects.all()['course']:
+            totalPrice += course.price
+        return totalPrice
+
+
+
 
