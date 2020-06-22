@@ -10,7 +10,7 @@ def index(request):
     for topic in top_list:
         para = '<p>'+ str(topic.id) + ': ' + str(topic) + '</p>'
         response.write(para)
-    course_names = Course.objects.all().order_by('price')[:5]
+    course_names = Course.objects.all().order_by('-price')[:5]
     heading2 = '<h2>' + 'List of Top 5 Courses: ' + '</h2>'
     response.write(heading2)
     for course in course_names:
