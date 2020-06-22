@@ -18,3 +18,16 @@ def index(request):
         response.write(course_details)
     return response
 
+def about(request):
+    response = HttpResponse() 
+    heading1 = '<p>' + 'This is an E-learning Website! Search our Topics to find all available Courses. ' + '</p>' 
+    response.write(heading1)
+    return response
+
+def detail(request, top_no):
+    top_list = Course.objects.filter(id=top_no)#.values('topic')
+    response = HttpResponse()
+    for topic in top_list:
+        para = '<p>'+ '<b>category:'+ '</b>' + '</br>' + str(topic) + '</p>' 
+        response.write(para) 
+    return response
