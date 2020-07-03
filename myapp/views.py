@@ -41,7 +41,7 @@ def detail(request, top_no):
     response = HttpResponse()
     response.write('<h1>List of Courses of Topic:</h1>'+top_no)
     topic=top_no
-    course_list = Course.objects.values('name').filter(topic='IT Certification')
+    course_list = Course.objects.values('name').filter(topic=topic)
     for course in course_list:
         response.write('<p>'+course+'</p>')
 
