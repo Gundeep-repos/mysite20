@@ -1,6 +1,7 @@
 # Import necessary classes
 from django.http import HttpResponse
 from .models import Topic, Course, Student, Order
+from django.shortcuts import get_list_or_404
 
 
 # Create your views here.
@@ -39,10 +40,10 @@ def about(request):
 
 def detail(request, top_no):
     response = HttpResponse()
-    response.write('<h1>List of Courses of Topic:</h1>'+top_no)
-    topic=top_no
-    course_list = Course.objects.values('name').filter(topic=topic)
-    for course in course_list:
-        response.write('<p>'+course+'</p>')
+    topic_name = Topic.objects.get(id = top_no).name
+    response.write('<h1>List of Courses of Topic: ' + str(topic_name)+'</h1>')
+    course_list = get_list_or_404(Course, topic=top_no)
 
+    for course in course_list:
+        response.write('<p>'+str(course.name)+'</p>')
     return response
