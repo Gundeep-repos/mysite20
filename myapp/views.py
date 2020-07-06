@@ -43,9 +43,9 @@ def about(request):
 def detail(request, top_no):
     response = HttpResponse()
     topic_name = Topic.objects.get(id = top_no).name
-    response.write('<h1>List of Courses of Topic: ' + str(topic_name)+'</h1>')
+    # response.write('<h1>List of Courses of Topic: ' + str(topic_name)+'</h1>')
     course_list = get_list_or_404(Course, topic=top_no)
 
-    for course in course_list:
-        response.write('<p>'+str(course.name)+'</p>')
-    return response
+    # for course in course_list:
+    #     response.write('<p>'+str(course.name)+'</p>')
+    return render(request, 'myapp/detail0.html', {'topic_name': topic_name, 'course_list': course_list})
