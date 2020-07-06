@@ -4,38 +4,39 @@ from .models import Topic, Course, Student, Order
 from django.shortcuts import get_list_or_404
 from django.shortcuts import render
 
+
 # Create your views here.
 
 
 def index(request):
     top_list = Topic.objects.all().order_by('id')[:10]
-    response = HttpResponse()
-    heading1 = '<p>' + 'List of topics: ' + '</p>'
-    response.write(heading1)
-    for topic in top_list:
-        para = '<p>'+ str(topic.id) + ': ' + str(topic) + '</p>'
-        #response.write(para)
+    # response = HttpResponse()
+    # heading1 = '<p>' + 'List of topics: ' + '</p>'
+    # response.write(heading1)
+    # for topic in top_list:
+    #     para = '<p>'+ str(topic.id) + ': ' + str(topic) + '</p>'
+    #     response.write(para)
 
-    #course list
+    # #course list
 
-    course_list = Course.objects.all().order_by('-price')[:5]
-    heading2 = '<p>' + 'List of Courses: ' + '</p>'
-    response.write(heading2)
-    for course in course_list:
-        if(course.for_everyone):
-            forEveryone = 'This Course is For Everyone!'
-        else:
-            forEveryone = 'This Course is Not For Everyone!'
-        para1 = '<p>' + str(course.name) + ':' + forEveryone + '</p>'
-        #response.write(para1)
+    # course_list = Course.objects.all().order_by('-price')[:5]
+    # heading2 = '<p>' + 'List of Courses: ' + '</p>'
+    # response.write(heading2)
+    # for course in course_list:
+    #     if(course.for_everyone):
+    #         forEveryone = 'This Course is For Everyone!'
+    #     else:
+    #         forEveryone = 'This Course is Not For Everyone!'
+    #     para1 = '<p>' + str(course.name) + ':' + forEveryone + '</p>'
+    #     response.write(para1)
 
     return render(request, 'myapp/index0.html', {'top_list': top_list})
 
 
 def about(request):
-    response = HttpResponse()
-    response.write('<h1>This is an E-learning Website! Search our Topics to find all available Courses</h1>')
-    return response
+    # response = HttpResponse()
+    # response.write('<h1>This is an E-learning Website! Search our Topics to find all available Courses</h1>')
+    return render(request, 'myapp/about0.html')
 
 
 def detail(request, top_no):
