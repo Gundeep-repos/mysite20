@@ -36,7 +36,8 @@ def index(request):
 def about(request):
     # response = HttpResponse()
     # response.write('<h1>This is an E-learning Website! Search our Topics to find all available Courses</h1>')
-    return render(request, 'myapp/about0.html')
+    data="This is an E-learning Website! Search our Topics to find all available Courses"
+    return render(request, 'myapp/about0.html', {'data': data})
 
 
 def detail(request, top_no):
