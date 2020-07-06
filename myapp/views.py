@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from .models import Topic, Course, Student, Order
 from django.shortcuts import get_list_or_404
-
+from django.shortcuts import render
 
 # Create your views here.
 
@@ -14,7 +14,7 @@ def index(request):
     response.write(heading1)
     for topic in top_list:
         para = '<p>'+ str(topic.id) + ': ' + str(topic) + '</p>'
-        response.write(para)
+        #response.write(para)
 
     #course list
 
@@ -27,9 +27,9 @@ def index(request):
         else:
             forEveryone = 'This Course is Not For Everyone!'
         para1 = '<p>' + str(course.name) + ':' + forEveryone + '</p>'
-        response.write(para1)
+        #response.write(para1)
 
-    return response
+    return render(request, 'myapp/index0.html', {'top_list': top_list})
 
 
 def about(request):
