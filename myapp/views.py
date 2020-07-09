@@ -30,14 +30,14 @@ def index(request):
     #     para1 = '<p>' + str(course.name) + ':' + forEveryone + '</p>'
     #     response.write(para1)
 
-    return render(request, 'myapp/index0.html', {'top_list': top_list})
+    return render(request, 'myapp/index.html', {'top_list': top_list})
 
 
 def about(request):
     # response = HttpResponse()
     # response.write('<h1>This is an E-learning Website! Search our Topics to find all available Courses</h1>')
     data="This is an E-learning Website! Search our Topics to find all available Courses"
-    return render(request, 'myapp/about0.html', {'data': data})
+    return render(request, 'myapp/about.html', {'data': data})
 
 
 def detail(request, top_no):
@@ -48,4 +48,4 @@ def detail(request, top_no):
 
     # for course in course_list:
     #     response.write('<p>'+str(course.name)+'</p>')
-    return render(request, 'myapp/detail0.html', {'topic_name': topic_name, 'course_list': course_list})
+    return render(request, 'myapp/detail.html', {'topic_name': topic_name, 'course_list': course_list})
