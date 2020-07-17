@@ -1,4 +1,15 @@
 .hbar1 {
  display: inline;
  margin: 15px;
+ color: red;
+}
+h1 {
+ font-size: 30px;
+ color: white;
+ font-style: italic;
+ position: static;
+ background-color: darkgray;
+}
+.color {
+ background-color: aqua;
 }

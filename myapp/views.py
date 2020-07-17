@@ -32,12 +32,19 @@ def index(request):
 
     return render(request, 'myapp/index.html', {'top_list': top_list})
 
+    '''Part 1
+    2. C) Wr are passing the context variable 'top_list' to the index view
+    '''
+
 
 def about(request):
     # response = HttpResponse()
     # response.write('<h1>This is an E-learning Website! Search our Topics to find all available Courses</h1>')
     data="This is an E-learning Website! Search our Topics to find all available Courses"
     return render(request, 'myapp/about.html', {'data': data})
+    '''Part 1
+    4. C) Wr are passing the context variable 'data' to the about view
+    '''
 
 
 def detail(request, top_no):
@@ -49,3 +56,6 @@ def detail(request, top_no):
     # for course in course_list:
     #     response.write('<p>'+str(course.name)+'</p>')
     return render(request, 'myapp/detail.html', {'topic_name': topic_name, 'course_list': course_list})
+    '''Part 1
+    5. C) Wr are passing the context variables 'topic_name' and 'course_list' to the detail view
+    '''
