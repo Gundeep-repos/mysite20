@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from decimal import Decimal
 from django.contrib.auth.models import User
 from django.utils import timezone
 
@@ -27,8 +28,8 @@ class Course(models.Model):
      def __str__(self):
          return f'Topic: {self.topic}, Name: {self.name}, Price: {self.price}'
      def discount(self):
-        disc = self.price * 0.10
-        return disc
+        self.price = self.price * Decimal(0.90)
+        print(self.price)
 
 class Student(User):
     CITY_CHOICES = [('WS', 'Windsor'),

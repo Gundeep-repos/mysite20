@@ -17,4 +17,4 @@ class InterestForm(forms.Form):
      CHOICES= (('1', 'Yes',),('0', 'No',))
      interested= forms.CharField(widget=forms.RadioSelect(choices=CHOICES))
      levels= forms.IntegerField(initial=1)
-     comments= forms.ChatField(widget=forms.Textarea(), required =False, label ="Additional Comments")
+     comments= forms.CharField(widget=forms.Textarea(), required =False, label ="Additional Comments")

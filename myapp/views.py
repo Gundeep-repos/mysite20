@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Topic, Course, Student, Order
 from django.shortcuts import get_list_or_404
 from django.shortcuts import render
+from .forms import OrderForm,InterestForm
 
 
 # Create your views here.
@@ -59,3 +60,52 @@ def detail(request, top_no):
     '''Part 1
     5. C) Wr are passing the context variables 'topic_name' and 'course_list' to the detail view
     '''
+
+
+def courses(request):
+    courlist = Course.objects.all().order_by('id')
+    return render(request, 'myapp/courses.html', {'courlist': courlist})
+
+
+def placeOrder(request):
+    #PART 2 1d
+    #return render(request, 'myapp/placeOrder.html')
+
+    msg = ''
+    courlist = Course.objects.all()
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            if order.levels <= order.course.stages:
+                if order.course.price>150:
+                    print("im here")
+                    order.course.discount()
+                #order.course.save()
+                order.save()
+                msg = 'Your course has been ordered successfully.'
+            else:
+                msg = 'You exceeded the number of levels for this course.'
+            return render(request, 'myapp/order_response.html', {'msg': msg})
+    else:
+        form = OrderForm()
+    return render(request, 'myapp/placeorder.html', {'form': form, 'msg': msg,'courlist': courlist})
+
+def courseDetail(request,cour_id):
+    course = Course.objects.get(id=cour_id)
+    top_list = Topic.objects.all().order_by('id')[:10]
+    print(course)
+    if request.method == 'POST':
+        form = InterestForm(request.POST)
+        if form.is_valid():
+            #interested = form.save(commit=False)
+            if form.cleaned_data['interested']:
+                course.interested = course.interested + 1
+                course.save()
+        return render(request, 'myapp/index.html', {'top_list': top_list})
+
+    else:
+        form = InterestForm()
+    return render(request, 'myapp/coursedetail.html', {'form': form,'course': course})
+
+

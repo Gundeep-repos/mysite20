@@ -1,0 +1,22 @@
+{% extends 'myapp/base.html' %}
+{% block body_block %}
+{#    PART 2 1d#}
+{#    <p>You can place an order here.</p>#}
+    {% if courlist %}
+    <h2>List of Courses</h2>
+    <ol>
+    {% for course in courlist %}
+    <li> {{ course.name}} </li>
+    {% endfor %}
+    </ol>
+    {% else %}
+    <strong>There are no available courses for this topic!</strong>
+    {% endif %}
+    <br>
+    <p>Order a new Course:</p>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Order</button>
+    </form>
+{% endblock %}
