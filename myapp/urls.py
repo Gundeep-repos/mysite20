@@ -6,4 +6,7 @@ urlpatterns = [
     path(r'', views.index, name='index'),
     path('about',views.about,name='about'),
     path('<int:top_no>/',views.detail),
+    path('courses',views.courses, name='courses'),
+    path('placeorder',views.placeOrder,name='placeOrder'),
+    path('courses/<int:cour_id>/',views.courseDetail),
 ]
