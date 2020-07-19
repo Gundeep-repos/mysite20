@@ -30,6 +30,8 @@ class Course(models.Model):
      def discount(self):
         self.price = self.price * Decimal(0.90)
         print(self.price)
+        return self.price
+
 
 class Student(User):
     CITY_CHOICES = [('WS', 'Windsor'),
@@ -41,7 +43,7 @@ class Student(User):
     interested_in = models.ManyToManyField(Topic)
 
     def __str__(self):
-        return f'School: {self.school}, City: {self.city}, Interest: {self.interested_in}'
+        return f'{self.first_name} {self.last_name}'
 
 
 class Order(models.Model):
@@ -52,6 +54,9 @@ class Order(models.Model):
     levels = models.PositiveIntegerField(blank=True, null=True)
     order_status = models.IntegerField(default=1, choices=Order_Choice)
     order_date = models.DateField()
+
+
+
 
     def __str__(self):
         return f'Course: {self.course}, Student: {self.student},' \
