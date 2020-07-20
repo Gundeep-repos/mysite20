@@ -1,7 +1,7 @@
 # Import necessary classes
 from django.http import HttpResponse,HttpResponseRedirect
 from .models import Topic, Course, Student, Order
-from django.shortcuts import get_list_or_404
+from django.shortcuts import get_list_or_404, get_object_or_404
 from django.shortcuts import render
 from .forms import OrderForm,InterestForm
 from django.contrib.auth import authenticate, login, logout
@@ -137,5 +137,15 @@ def user_logout(request):
     return HttpResponseRedirect(reverse(('myapp:index')))
 
 @login_required
-def myaccount(request, id):
-    return render(request, 'myapp/myaccount.html')
+def myaccount(request):
+    if Student.objects.get(id=request.user.id):
+        id=Student.objects.filter(id=request.user.id)
+        Firstname= request.user.first_name
+        Lastname= request.user.last_name
+        # List of interested
+        intrstlist=id.values_list('interested_in__name')
+        context= {'First_name': Firstname,'Last_name':Lastname,'interested_list':intrstlist}
+        return render(request, 'myapp/myaccount.html', context)
+    else:
+         context="You are not a registered student!"
+         return render(request, 'myapp/myaccount.html', context)

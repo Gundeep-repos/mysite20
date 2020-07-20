@@ -9,6 +9,7 @@ urlpatterns = [
     path('courses',views.courses, name='courses'),
     path('placeorder',views.placeOrder,name='placeOrder'),
     path('courses/<int:cour_id>/',views.courseDetail),
+    path('myaccount',views.myaccount,name="myaccount"),
     path('login',views.user_login,name="user_login"),
     path('logout',views.user_logout,name="user_logout"),
 ]

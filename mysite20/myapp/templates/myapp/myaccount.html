@@ -1,0 +1,24 @@
+{% extends 'myapp/base.html' %}
+{% block body_block %}
+<b>
+    My account<br>
+    <h1>{{First_name}} {{Last_name}}</h1><br>
+    <h2>List of courses ordered</h2><br>
+    <p>
+        {{order_list}}
+    </p><br>
+    <p>
+    {% if interested_list %}
+    
+    <h2>List of Topics interested in</h2>
+    <ol>
+    {% for course in interested_list %}
+    <li> {{course}} </li> 
+    {% endfor %}
+    </ol>
+    {% else %}
+    <strong>There student didnt select any interested topics!</strong>
+    {% endif %}
+    </p>
+</b>
+{% endblock %}
