@@ -1,12 +1,11 @@
 {% extends 'myapp/base.html' %}
 {% block body_block %}
-<b>
     My account<br>
     <h1>{{First_name}} {{Last_name}}</h1><br>
     <h2>List of courses ordered</h2><br>
     <p>
-        {{order_list}}
-    </p><br>
+        {{orders}}
+    </p>
     <p>
     {% if interested_list %}
     
@@ -20,5 +19,5 @@
     <strong>There student didnt select any interested topics!</strong>
     {% endif %}
     </p>
-</b>
+
 {% endblock %}

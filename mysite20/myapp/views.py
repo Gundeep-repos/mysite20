@@ -142,9 +142,11 @@ def myaccount(request):
         id=Student.objects.filter(id=request.user.id)
         Firstname= request.user.first_name
         Lastname= request.user.last_name
+        # Orders
+        orders = Order.objects.get(student=request.user.id);
         # List of interested
         intrstlist=id.values_list('interested_in__name')
-        context= {'First_name': Firstname,'Last_name':Lastname,'interested_list':intrstlist}
+        context= {'First_name': Firstname,'Last_name':Lastname,'interested_list':intrstlist, 'orders': orders}
         return render(request, 'myapp/myaccount.html', context)
     else:
          context="You are not a registered student!"
