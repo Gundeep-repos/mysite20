@@ -165,7 +165,7 @@ def user_login(request):
                 response = HttpResponseRedirect(reverse('myapp:index'))
                 request.session['last_connection'] = dumps(datetime.datetime.now(), default=json_serial)
                 request.session.set_expiry(3600)
-                return response
+                return HttpResponseRedirect(reverse(('myapp:myaccount')))
 
             else:
                 return HttpResponse('Your account is disabled.')
