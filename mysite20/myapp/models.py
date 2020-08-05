@@ -21,6 +21,7 @@ class Course(models.Model):
      name = models.CharField(max_length=200)
      price = models.DecimalField(max_digits=10, decimal_places=2)
      for_everyone = models.BooleanField(default=True)
+     hours=models.IntegerField(default=1)
      description = models.TextField(max_length=300, null=True, blank=True)
      interested = models.PositiveIntegerField(default = 0)
      stages = models.PositiveIntegerField(default = 3)
@@ -67,7 +68,3 @@ class Order(models.Model):
         for course in Order.objects.all()['course']:
             totalPrice += course.price
         return totalPrice
-
-
-
-

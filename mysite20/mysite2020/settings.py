@@ -25,6 +25,12 @@ SECRET_KEY = 'c9s1#q2%xm_lyalls$e5b4tnzb%=gk+r982dfqgw%1%r-mb+69'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.co' # mail service smtp
+EMAIL_HOST_USER = 'allengeorgeproj@gmail.com' # email id
+EMAIL_HOST_PASSWORD = 'Project@123!' #password
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
@@ -39,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myapp.apps.MyappConfig',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -101,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/

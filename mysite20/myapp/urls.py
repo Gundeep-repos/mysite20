@@ -1,6 +1,8 @@
 from django.urls import path
 from myapp import views
-from django.conf.urls import url
+from django.conf.urls import url, include
+from django.contrib.auth import views as auth_views
+
 app_name = 'myapp'
 urlpatterns = [
     path(r'', views.index, name='index'),
@@ -12,4 +14,7 @@ urlpatterns = [
     path('myaccount',views.myaccount,name="myaccount"),
     path('login',views.user_login,name="user_login"),
     path('logout',views.user_logout,name="user_logout"),
+    path('register',views.register,name='register'),
+    #password reset views
+    
 ]

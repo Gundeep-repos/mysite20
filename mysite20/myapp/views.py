@@ -4,8 +4,8 @@ from .models import Topic, Course, Student, Order
 from json import dumps
 import datetime
 from django.shortcuts import get_list_or_404, get_object_or_404
-from django.shortcuts import render
-from .forms import OrderForm,InterestForm
+from django.shortcuts import render, redirect
+from .forms import OrderForm,InterestForm, RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
@@ -176,18 +176,18 @@ def user_login(request):
 
 @login_required
 def user_logout(request):
-    del request.session['last_connection']
-    # logout(request)
+    #del request.session['last_connection']
+    logout(request)
     return HttpResponseRedirect(reverse(('myapp:index')))
 
-@login_required
+@login_required(login_url='/myapp/login')
 def myaccount(request):
     if Student.objects.get(id=request.user.id):
         id=Student.objects.filter(id=request.user.id)
         Firstname= request.user.first_name
         Lastname= request.user.last_name
         # Orders
-        orders = Order.objects.get(student=request.user.id);
+        orders = Order.objects.get(student=request.user.id)
         # List of interested
         intrstlist=id.values_list('interested_in__name')
         context= {'First_name': Firstname,'Last_name':Lastname,'interested_list':intrstlist, 'orders': orders}
@@ -195,3 +195,15 @@ def myaccount(request):
     else:
          context="You are not a registered student!"
          return render(request, 'myapp/myaccount.html', context)
+
+def register(request):
+    if request.method == "POST":
+        form1 = RegisterForm(request.POST)
+        if form1.is_valid():
+	        form1.save()
+	        return redirect("index.html")
+        else:
+           return HttpResponse('Fill all form fields to register')
+    else:
+	    form = RegisterForm()
+    return render(request, "myapp/register.html", {"form":form})
