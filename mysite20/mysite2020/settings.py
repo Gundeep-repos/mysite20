@@ -26,6 +26,9 @@ SECRET_KEY = 'c9s1#q2%xm_lyalls$e5b4tnzb%=gk+r982dfqgw%1%r-mb+69'
 DEBUG = True
 
 
+EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 

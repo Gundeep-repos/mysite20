@@ -207,3 +207,4 @@ def register(request):
     else:
 	    form = RegisterForm()
     return render(request, "myapp/register.html", {"form":form})
+

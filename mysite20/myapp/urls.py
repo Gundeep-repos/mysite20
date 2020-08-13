@@ -1,6 +1,7 @@
 from django.urls import path
 from myapp import views
 from django.conf.urls import url, include
+from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
 app_name = 'myapp'
@@ -16,5 +17,8 @@ urlpatterns = [
     path('logout',views.user_logout,name="user_logout"),
     path('register',views.register,name='register'),
     #password reset views
+    #url(r"^accounts/", include("django.contrib.auth.urls")),
+    #url(r'^admin/', include(admin.site.urls)),
+
     
 ]
