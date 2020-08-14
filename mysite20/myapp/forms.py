@@ -22,13 +22,14 @@ class InterestForm(forms.Form):
 class RegisterForm(forms.ModelForm):
     class Meta: 
         model=Student
-        fields=('username', 'password', 'first_name', 'last_name', 'city', 'interested_in')
+        fields=('username', 'password', 'first_name', 'last_name', 'city', 'interested_in','img')
         widgets= {
             'username':forms.TextInput(),
             'password':forms.PasswordInput(),
             'first_name':forms.TextInput(),
             'last_name':forms.TextInput(),
             'city':forms.TextInput(),
+
         }
         labels ={
             'username':"Enter username",
@@ -36,4 +37,5 @@ class RegisterForm(forms.ModelForm):
             'firstname':"Enter your firstname",
             'lastname':"Enter your lastname",
             'city':"Enter your city",
+            'img':"Select your profile picture"
         }

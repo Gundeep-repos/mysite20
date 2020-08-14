@@ -1,0 +1,19 @@
+[
+  {
+    "model": "myapp.Student",
+    "fields": {
+
+      "first_name": "Arvind",
+      "last_name": "Narayan"
+    }
+  },
+  {
+    "model": "myapp.Topic",
+    "fields": {
+
+      "name": "Dummy Course",
+      "category": "Dummy"
+    }
+  }
+
+]

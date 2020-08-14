@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from PIL import Image
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +26,10 @@ SECRET_KEY = 'c9s1#q2%xm_lyalls$e5b4tnzb%=gk+r982dfqgw%1%r-mb+69'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-
+# FIXTURE_DIRS = (
+#    '/myapp/fixtures/',
+# )
+#https://stackoverflow.com/questions/20743014/no-fixture-named-x-found
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
 
@@ -43,6 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'myapp.apps.MyappConfig',
     'crispy_forms',
+    "bootstrap3",
+
 ]
 
 MIDDLEWARE = [
