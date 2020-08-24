@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: nannapav@uwindsor.ca
+Date: Mon, 24 Aug 2020 13:31:02 -0000
+Message-ID: <159827586207.10408.3066407457695530411@deepakslaptop>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/OA/5jb-58b5f3afccc8866f023a/
+
+Your username, in case you've forgotten: ndeep
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
